@@ -2,9 +2,15 @@ package edu.co.icesi.introspringboot.entity;
 
 import edu.co.icesi.introspringboot.entity.keys.UserRoleId;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "user_role")
+@Getter
+@Setter
+@NoArgsConstructor
 public class UserRole {
 
     @EmbeddedId
@@ -19,11 +25,4 @@ public class UserRole {
     @MapsId("roleId")
     @JoinColumn(name = "role_id")
     private Role role;
-
-    public UserRoleId getId() { return id; }
-    public void setId(UserRoleId id) { this.id = id; }
-    public User getUser() { return user; }
-    public void setUser(User user) { this.user = user; }
-    public Role getRole() { return role; }
-    public void setRole(Role role) { this.role = role; }
 }

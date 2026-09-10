@@ -2,9 +2,15 @@ package edu.co.icesi.introspringboot.entity;
 
 import edu.co.icesi.introspringboot.entity.keys.RolePermissionId;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "role_permission")
+@Getter
+@Setter
+@NoArgsConstructor
 public class RolePermission {
 
     @EmbeddedId
@@ -19,11 +25,4 @@ public class RolePermission {
     @MapsId("permissionId")
     @JoinColumn(name = "permission_id")
     private Permission permission;
-
-    public RolePermissionId getId() { return id; }
-    public void setId(RolePermissionId id) { this.id = id; }
-    public Role getRole() { return role; }
-    public void setRole(Role role) { this.role = role; }
-    public Permission getPermission() { return permission; }
-    public void setPermission(Permission permission) { this.permission = permission; }
 }
