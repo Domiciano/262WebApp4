@@ -1,7 +1,7 @@
 -- Profesores
 INSERT INTO professor (name) VALUES ('Juan Perez');
 INSERT INTO professor (name) VALUES ('Maria Rodriguez');
-INSERT INTO professor (name) VALUES ('Carlos Gomez');
+INSERT INTO professor (name) VALUES ('Marlon Gomez');
 
 -- Cursos
 INSERT INTO course (name, credits, professor_id) VALUES ('Introduccion a la Programacion', 4, 1);
