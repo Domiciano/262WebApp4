@@ -2,7 +2,9 @@ package edu.co.icesi.introspringboot.controller;
 
 
 import edu.co.icesi.introspringboot.entity.Student;
+import edu.co.icesi.introspringboot.entity.User;
 import edu.co.icesi.introspringboot.repo.StudentRepository;
+import edu.co.icesi.introspringboot.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,20 +14,17 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/students")
-public class StudentController {
+@RequestMapping("/user")
+public class UserController {
 
     @Autowired
-    private StudentRepository studentRepository;
+    private UserRepository userRepository;
 
-    @GetMapping("/lab1")
-    public Optional<Student> lab1() {
-        return studentRepository.findByCode("2021102001");
-    }
-
-    @GetMapping("/lab9")
-    public List<Student> lab9() {
-        return studentRepository.findDistinctByStudentCourses_Course_Professor_Name("Marlon Gomez");
+    @GetMapping("/labx")
+    public List<User> labx() {
+        return userRepository.findDistinctByUserRoles_Role_RolePermissions_Permission_Name(
+                "CREATE_STUDENT"
+        );
     }
 
 

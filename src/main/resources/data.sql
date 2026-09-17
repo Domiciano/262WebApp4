@@ -4,9 +4,9 @@ INSERT INTO professor (name) VALUES ('Maria Rodriguez');
 INSERT INTO professor (name) VALUES ('Marlon Gomez');
 
 -- Cursos
-INSERT INTO course (name, credits, professor_id) VALUES ('Introduccion a la Programacion', 4, 1);
+INSERT INTO course (name, credits, professor_id) VALUES ('Introduccion a la Programacion', 4, 3);
 INSERT INTO course (name, credits, professor_id) VALUES ('Estructuras de Datos', 4, 1);
-INSERT INTO course (name, credits, professor_id) VALUES ('Anatomia Humana', 5, 2);
+INSERT INTO course (name, credits, professor_id) VALUES ('Anatomia Humana', 5, 3);
 INSERT INTO course (name, credits, professor_id) VALUES ('Fisiologia', 5, 2);
 INSERT INTO course (name, credits, professor_id) VALUES ('Derecho Penal', 3, 3);
 INSERT INTO course (name, credits, professor_id) VALUES ('Historia del Arte', 3, 3);
@@ -89,7 +89,7 @@ INSERT INTO app_user (username, password) VALUES ('sofia',   '{noop}dir123');   
 
 -- ─── ASIGNACIÓN DE ROLES ─────────────────────────────────────────────────────
 INSERT INTO user_role (user_id, role_id) VALUES (1, 1); -- carlos  → ADMIN
-INSERT INTO user_role (user_id, role_id) VALUES (2, 1); -- maria   → ADMIN
+INSERT INTO user_role (user_id, role_id) VALUES (2, 2); -- maria   → ADMIN
 INSERT INTO user_role (user_id, role_id) VALUES (3, 2); -- ana     → DIRECTOR
 INSERT INTO user_role (user_id, role_id) VALUES (4, 2); -- juan    → DIRECTOR
 INSERT INTO user_role (user_id, role_id) VALUES (5, 2); -- sofia   → DIRECTOR
