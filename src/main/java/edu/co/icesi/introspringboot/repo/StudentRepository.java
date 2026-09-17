@@ -2,6 +2,8 @@ package edu.co.icesi.introspringboot.repo;
 
 
 import edu.co.icesi.introspringboot.entity.Student;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,4 +15,6 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
 
     Optional<Student> findByCode(String code);
     List<Student> findDistinctByStudentCourses_Course_Professor_Name(String name);
+
+    Page<Student> findAll(Pageable pageable);
 }
