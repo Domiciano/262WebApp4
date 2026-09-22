@@ -2,35 +2,18 @@ package edu.co.icesi.introspringboot.service;
 
 import edu.co.icesi.introspringboot.entity.UserRole;
 import edu.co.icesi.introspringboot.entity.keys.UserRoleId;
-import edu.co.icesi.introspringboot.repo.UserRoleRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
-public class UserRoleService {
+public interface UserRoleService {
 
-    @Autowired
-    private UserRoleRepository userRoleRepository;
+    List<UserRole> findAll();
 
-    public List<UserRole> findAll() {
-        return userRoleRepository.findAll();
-    }
+    Optional<UserRole> findById(UserRoleId id);
 
-    public Optional<UserRole> findById(UserRoleId id) {
-        return userRoleRepository.findById(id);
-    }
+    UserRole save(UserRole userRole);
 
-    @Transactional
-    public UserRole save(UserRole userRole) {
-        return userRoleRepository.save(userRole);
-    }
+    void deleteById(UserRoleId id);
 
-    @Transactional
-    public void deleteById(UserRoleId id) {
-        userRoleRepository.deleteById(id);
-    }
 }

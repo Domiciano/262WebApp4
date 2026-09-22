@@ -29,12 +29,12 @@ Educational Spring Boot project demonstrating a student-course enrollment system
 
 - **entity/** — JPA domain models: `Student`, `Course`, `Professor`, `Enrollment`, `User`, `Role`, `Permission`, `UserRole`. Composite keys live in `entity/keys/`.
 - **repository/** — Spring Data JPA repositories. `StudentRepository` and others define custom query-derived methods (e.g., `findByNameContainingIgnoreCase`, deep nested navigation like `findByRolePermissions_Role_UserRoles_User_Username`).
-- **service/** — Interfaces (`StudentService`, `CourseService`, etc.) plus stub implementations (`StudentServiceImpl`, `CourseServiceImpl`) that are intentionally left inactive.
-- **service/impl/** — Full working implementations (`StudentServiceImpl`, `CourseServiceImpl`, etc.). This is the active service layer wired via `@Service`.
-- **controller/** — REST controllers. `ExercisesController` is the main demo of query methods; `EnrollmentController` demonstrates `@Transactional` usage.
+- **service/** — Service interfaces (`StudentService`, `CourseService`, `EnrollmentService`, `PermissionService`, `ProfessorService`, `RoleService`, `RolePermissionService`, `UserService`, `UserRoleService`). No implementation logic lives here.
+- **service/impl/** — `XxxServiceImpl` classes implementing each interface, wired via `@Service`. This is where all business logic lives. `StudentServiceImpl` still has TODO stubs for `findStudentByCode`, `getStudentsByCourseName`, `deleteStudentByCode`, `enrollStudentInCourse` and `unenrollStudentFromCourse` — the homework exercise.
+- **controller/** — REST controllers (`CourseController`, `ProfessorController`, `StudentController`, `UserController`), injected against the service interfaces.
 
-### Dual service package pattern
-There is a deliberate split: `service/` contains stub `*Impl` classes (deactivated — no `@Service`) and `service/impl/` contains the real implementations. When adding or modifying business logic, work in `service/impl/`.
+### Service layer convention
+Every service is split into an interface in `service/` and a single `@Service`-annotated `XxxServiceImpl` in `service/impl/`. Controllers and tests depend on the interface type; only the interface + its impl need to change together when adding a new service.
 
 ## Testing
 

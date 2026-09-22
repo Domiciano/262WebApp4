@@ -1,0 +1,40 @@
+package edu.co.icesi.introspringboot.service.impl;
+
+import edu.co.icesi.introspringboot.entity.Enrollment;
+import edu.co.icesi.introspringboot.repo.EnrollmentRepository;
+import edu.co.icesi.introspringboot.service.EnrollmentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class EnrollmentServiceImpl implements EnrollmentService {
+
+    @Autowired
+    private EnrollmentRepository enrollmentRepository;
+
+    @Override
+    public List<Enrollment> findAll() {
+        return enrollmentRepository.findAll();
+    }
+
+    @Override
+    public Optional<Enrollment> findById(Integer id) {
+        return enrollmentRepository.findById(id);
+    }
+
+    @Override
+    @Transactional
+    public Enrollment save(Enrollment enrollment) {
+        return enrollmentRepository.save(enrollment);
+    }
+
+    @Override
+    @Transactional
+    public void deleteById(Integer id) {
+        enrollmentRepository.deleteById(id);
+    }
+}
