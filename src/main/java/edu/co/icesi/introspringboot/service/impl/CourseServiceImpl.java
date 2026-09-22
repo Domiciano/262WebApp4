@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class CourseServiceImpl implements CourseService {
 
@@ -40,12 +42,23 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public Course createCourse(Course course) {
-        if(course.getName() == null){
+        if(courseRepository.existsByName(course.getName())) {
+            throw new IllegalArgumentException("Course with name " + course.getName() + " already exists");
+        }
+        else if(professorRepository.findById(course.getProfessor().getId()).isEmpty()) {
+            throw new IllegalStateException("Professor with id " + course.getProfessor().getId() + " does not exist");
+        }
+        else if(course.getName() == null){
             throw new IllegalStateException("Course name is null");
         }else {
             Course savedCourse = courseRepository.save(course);
             return savedCourse;
         }
+    }
+
+    @Override
+    public List<Course> getAll() {
+        return courseRepository.findAll();
     }
 
 }
