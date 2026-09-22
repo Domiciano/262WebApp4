@@ -16,5 +16,7 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
     Optional<Student> findByCode(String code);
     List<Student> findDistinctByStudentCourses_Course_Professor_Name(String name);
 
+    List<Student> findByStudentCourses_Course_Name(String courseName);
+
     Page<Student> findAll(Pageable pageable);
 }
