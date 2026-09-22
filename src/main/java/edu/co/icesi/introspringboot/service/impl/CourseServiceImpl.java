@@ -38,4 +38,14 @@ public class CourseServiceImpl implements CourseService {
         enrollmentRepository.deleteByCourse_Id(id);
     }
 
+    @Override
+    public Course createCourse(Course course) {
+        if(course.getName() == null){
+            throw new IllegalStateException("Course name is null");
+        }else {
+            Course savedCourse = courseRepository.save(course);
+            return savedCourse;
+        }
+    }
+
 }

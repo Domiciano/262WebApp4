@@ -9,4 +9,5 @@ public interface CourseService {
 
     void deleteCourse(Integer id);
 
+    Course createCourse(Course course);
 }
